@@ -4,7 +4,7 @@ import welcome from "../assets/logo_welcome.svg";
 const Sambutan = () => {
   return (
     <>
-      <div style={{ backgroundColor: "lightgrey" }}>
+      <div style={{ backgroundColor: "lightgrey", padding: "5px 0px" }}>
         {" "}
         <div
           className="body"
@@ -292,28 +292,38 @@ const Sambutan = () => {
               <p>Privasi</p>
             </div>
           </div>
-          <div className="icons" style={{
-            display:"flex",
-            justifyContent:"center",
-            gap:"700px",
-            // border:"1px solid green",
-
-          }}>
-            <div style={{
-                // border:"1px solid yellow",
-
-            }}>
+          <div
+            className="icons"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "700px",
+              // border:"1px solid green",
+            }}
+          >
+            <div
+              style={
+                {
+                  // border:"1px solid yellow",
+                }
+              }
+            >
               {" "}
-              <p style={{
-                                margin:0
-
-              }}>Hak Cipta © Sewa Ruang Impian 2023</p>
+              <p
+                style={{
+                  margin: 0,
+                }}
+              >
+                Hak Cipta © Sewa Ruang Impian 2023
+              </p>
             </div>
-            <div style={{
-                display:"flex",
-                gap:"10px",
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
                 // border:"1px solid black",
-            }}>
+              }}
+            >
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -339,9 +349,9 @@ const Sambutan = () => {
               </span>
             </div>
           </div>
-          <br/>
-          <br/>
-          <br/>
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     </>
