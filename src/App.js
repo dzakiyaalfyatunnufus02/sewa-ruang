@@ -1,17 +1,17 @@
 import "./App.css";
-import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sambutan from "./components/Sambutan";
 import Home from "./components/Home";
-import Login from "./components/Login"
+import Login from "./components/Login";
 import PrivateRoute from "./privat-router/PrivatRoute";
 import Register from "./components/Register";
+import Tabel from "./components/Tabel";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-       
           <Route
             path="/home"
             element={
@@ -44,7 +44,15 @@ function App() {
               </PrivateRoute>
             }
           />
-        </Routes>
+          <Route
+            path="/tabel"
+            element={
+              <PrivateRoute>
+                <Tabel />
+              </PrivateRoute>
+            }
+          />
+          </Routes>
       </Router>
     </div>
   );

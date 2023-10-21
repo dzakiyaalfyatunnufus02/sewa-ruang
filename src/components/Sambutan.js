@@ -4,6 +4,7 @@ import welcome from "../assets/logo_welcome.svg";
 const Sambutan = () => {
   return (
     <>
+    
       <div style={{ backgroundColor: "lightgrey", padding: "5px 0px" }}>
         {" "}
         <div
@@ -138,7 +139,11 @@ const Sambutan = () => {
                 <li>AC</li>
                 <li>LCD Proyektor</li>
               </ul>
-              <button>Daftar Sekarang</button>
+              <button style={{
+                backgroundColor:"#6C5F5B",
+                border:"0",
+                borderRadius:"10px"
+              }}>Daftar Sekarang</button>
             </div>
             <div
               className="terbaik"
@@ -159,7 +164,11 @@ const Sambutan = () => {
               </ul>
               <div>
                 {" "}
-                <button>Daftar Sekarang</button>
+                <button  style={{
+                backgroundColor:"#6C5F5B",
+                border:"0",
+                borderRadius:"10px"
+              }}>Daftar Sekarang</button>
               </div>
             </div>
             <div
@@ -179,7 +188,11 @@ const Sambutan = () => {
                 <li>AC</li>
                 <li>Layanan Gratis</li>
               </ul>
-              <button>Daftar Sekarang</button>
+              <button  style={{
+                backgroundColor:"#6C5F5B",
+                border:"0",
+                borderRadius:"10px"
+              }}>Daftar Sekarang</button>
             </div>
           </div>
           <br />

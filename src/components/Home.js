@@ -1,23 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import keluarga from "../assets/ruang-keluarga.png";
 import rapat from "../assets/ruang-rapat.jpg";
 import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
 import "../components/Home.css";
+import { Container, Nav, NavDropdown, NavLink, Navbar } from "react-bootstrap";
+import { Button, Col, Collapse, ListGroup } from "react-bootstrap";
 
 const Home = () => {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+
   return (
     <>
+      <div></div>
+
       <div className="head-home">
+        <Navbar
+          bg="primary"
+          data-bs-theme="dark"
+          expand="lg"
+          className="bg-body-tertiary"
+          id="navbar"
+          style={{ backgroundColor: "#6c5f5b" }}
+        >
+          <Navbar.Brand href="/home">Sewa ruang</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/home">Home</Nav.Link>
+              <Nav.Link href="/tableOrder">Approve List</Nav.Link>
+              <Nav.Link href="/reportSewa">Report Sewa</Nav.Link>
+              <Nav.Link href="/table">Table</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Something
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav className="btn">
+              <button onClick={"handleLogout"} className="btn btn-danger">
+                LOGOUT
+              </button>
+            </Nav>
+            <NavLink to={"/profile"}>
+              <Nav>
+                <button
+                  onClick={"handleprofil"}
+                  className="btn btn-secondary"
+                  variant="secondary"
+                >
+                  PROFILE
+                </button>
+              </Nav>
+            </NavLink>
+          </Navbar.Collapse>
+        </Navbar>
         <div className="body1-home">
           <h1>Dz's Rental Rooms</h1>
           <div className="img-wrap-home">
             <img src={ruang} alt="ruangan" className="img-home" />
           </div>
+          <br />
           <p>Ciptakan ruangan impian anda</p>
           <button className="btn1-home">Daftar Sekarang!</button>
           <br />
           <br />
-          <div></div>
           <div className="span-wrap-home">
             <span className="span-home">
               <svg
@@ -119,113 +175,211 @@ const Home = () => {
             </div>
           </div>
         </div>
-
+        <br />
         <div className="body3-home">
           <h1>FAQ</h1>
         </div>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button
-                  class="btn btn-link"
-                  data-toggle="collapse"
-                  data-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
+        <br />
+        <br />
+        <br />
+        <br />
+        <ListGroup className="transisi">
+          <ListGroup.Item
+            className="transisi1"
+            onClick={() => setOpen1(!open1)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open1}
+          >
+            <div className="span-home-svg1">
+              <p> Bagaimana cara menyewa ruangan di Dz's Rental Rooms? </p>
+
+              <span className="span-home" style={{ paddingLeft: 0 }}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-plus-lg"
+                  viewBox="0 0 16 16"
                 >
-                  Collapsible Group Item #1
-                </button>
-              </h5>
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                  />
+                </svg>
+              </span>
             </div>
 
-            <div
-              id="collapseOne"
-              class="collapse show"
-              aria-labelledby="headingOne"
-              data-parent="#accordion"
-            >
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+            <Collapse in={open1} className="collapse">
+              <div
+                id="example-collapse-text"
+                style={{
+                  color: "#967E76",
+                }}
+              >
+                <div className="card card-body">
+                  Untuk menyewa ruangan di Dz's Rental Rooms, Anda dapat
+                  mengikuti langkah-langkah berikut:
+                  <ol>
+                    <li>Kunjungi situs web kami.</li>
+                    <li>Pilih ruangan yang ingin Anda sewa.</li>
+                    <li>
+                      Isi formulir pemesanan dengan informasi yang diperlukan.
+                    </li>
+                    <li>Pilih tanggal dan waktu sewa yang diinginkan.</li>
+                    <li>
+                      Selesaikan pembayaran sesuai dengan instruksi yang
+                      diberikan.
+                    </li>
+                  </ol>
+                  Setelah itu, Anda akan menerima konfirmasi pemesanan dan
+                  petunjuk lebih lanjut.
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
+            </Collapse>
+          </ListGroup.Item>
+          <ListGroup.Item
+            className="transisi2"
+            onClick={() => setOpen2(!open2)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open2}
+          >
+            <div className="span-home-svg2">
+              <p> Apakah tersedia layanan katering untuk acara sewa ruang? </p>
+
+              <span style={{}}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-plus-lg"
+                  viewBox="0 0 16 16"
                 >
-                  Collapsible Group Item #2
-                </button>
-              </h5>
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                  />
+                </svg>
+              </span>
             </div>
-            <div
-              id="collapseTwo"
-              class="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordion"
-            >
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button
-                  class="btn btn-link collapsed"
-                  data-toggle="collapse"
-                  data-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
+
+            <Collapse in={open2}>
+              <div
+                id="example-collapse-text"
+                style={{
+                  color: "#967E76",
+                }}
+              >
+                <div
+                  className="card card-body"
+                  style={{
+                    color: "#967E76",
+                  }}
                 >
-                  Collapsible Group Item #3
-                </button>
-              </h5>
-            </div>
-            <div
-              id="collapseThree"
-              class="collapse"
-              aria-labelledby="headingThree"
-              data-parent="#accordion"
-            >
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                non cupidatat skateboard dolor brunch. Food truck quinoa
-                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                excepteur butcher vice lomo. Leggings occaecat craft beer
-                farm-to-table, raw denim aesthetic synth nesciunt you probably
-                haven't heard of them accusamus labore sustainable VHS.
+                  Ya, kami menyediakan layanan katering untuk acara sewa ruang.
+                  Anda dapat memilih paket katering yang sesuai dengan kebutuhan
+                  Anda selama proses pemesanan ruangan.
+                </div>
               </div>
+            </Collapse>
+          </ListGroup.Item>
+          <ListGroup.Item
+            className="transisi3"
+            onClick={() => setOpen3(!open3)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open3}
+          >
+            <div className="span-home-svg3">
+              <p> Apa yang termasuk dalam fasilitas sewa ruang?</p>
+
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-plus-lg"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                  />
+                </svg>
+              </span>
             </div>
+
+            <Collapse in={open3}>
+              <div id="example-collapse-text">
+                <div
+                  className="card card-body"
+                  style={{
+                    color: "#967E76",
+                  }}
+                >
+                  Fasilitas sewa ruang mencakup:
+                  <ul>
+                    <li>
+                      Ruang yang telah dipilih sesuai dengan kapasitas yang Anda
+                      butuhkan.
+                    </li>
+                    <li>
+                      Peralatan teknis seperti proyektor, layar, dan mikrofon
+                      (jika diperlukan).
+                    </li>
+                    <li>Layanan pembersihan sebelum dan setelah acara.</li>
+                  </ul>
+                  Untuk informasi lebih lanjut, hubungi tim layanan pelanggan
+                  kami.
+                </div>
+              </div>
+            </Collapse>
+          </ListGroup.Item>
+        </ListGroup>
+        <br />
+        <br />
+        <br />
+        <div
+          className="icons"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "700px",
+            backgroundColor: "lightgray",
+            padding: "10px",
+
+            // border:"1px solid green",
+          }}
+        >
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
+            }
+          >
+            {" "}
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              Hak Cipta © dzkyalfyatnnfs 2023
+            </p>
+          </div>
+          <div
+            className="a.href"
+            style={{
+              display: "flex",
+              gap: "20px",
+              color: "#967E76",
+            }}
+          >
+            <a href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+            {/* </div>
+<div> */}
+            <a href="https://www.twitter.com">Twitter</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,12 @@
+.table.tabel{
+    text-align: center;
+}
+.thead-tabel{
+padding: 0px;
+text-align: center;
+}
+.body1-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
