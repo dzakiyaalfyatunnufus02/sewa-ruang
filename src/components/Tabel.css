@@ -1,12 +1,44 @@
 .table.tabel{
     text-align: center;
-}
+   }
 .thead-tabel{
 padding: 0px;
 text-align: center;
+width: 800px;
+margin-left: 230px;
 }
 .body1-home {
     display: flex;
     flex-direction: column;
     align-items: center;
+   
   }
+  .btn-edt-tabel{
+    border-radius: 10px;
+    background-color: antiquewhite;
+    margin-right: 10px;
+  }
+  .btn-dlt-home{
+    border-radius: 10px;
+    background-color: #6c5f5b;
+    color: white;
+  }.body1-home
+  .closing-section{
+    text-align: center;
+
+
+  }
+  .btn-lnk{
+    background-color: lightslategrey;
+    color: black;
+    width: 600px;
+    margin-left: 340px;
+}
+ 
+  /* .body-tabel{
+    width: 700px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+  } */

@@ -327,7 +327,7 @@ const Sambutan = () => {
                   margin: 0,
                 }}
               >
-                Hak Cipta © Sewa Ruang Impian 2023
+                Hak Cipta © dzkyalftnnfs2023
               </p>
             </div>
             <div

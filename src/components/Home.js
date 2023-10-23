@@ -31,7 +31,7 @@ const Home = () => {
               <Nav.Link href="/home">Home</Nav.Link>
               <Nav.Link href="/tableOrder">Approve List</Nav.Link>
               <Nav.Link href="/reportSewa">Report Sewa</Nav.Link>
-              <Nav.Link href="/table">Table</Nav.Link>
+              <Nav.Link href="/tabel">Table</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -64,6 +64,7 @@ const Home = () => {
             </NavLink>
           </Navbar.Collapse>
         </Navbar>
+        <br/>
         <div className="body1-home">
           <h1>Dz's Rental Rooms</h1>
           <div className="img-wrap-home">
@@ -190,7 +191,7 @@ const Home = () => {
             aria-controls="example-collapse-text"
             aria-expanded={open1}
           >
-            <div className="span-home-svg1">
+            <div className="span-home-svg1" >
               <p> Bagaimana cara menyewa ruangan di Dz's Rental Rooms? </p>
 
               <span className="span-home" style={{ paddingLeft: 0 }}>
@@ -365,7 +366,7 @@ const Home = () => {
                 margin: 0,
               }}
             >
-              Hak Cipta © dzkyalfyatnnfs 2023
+              Hak Cipta © dzkyalftnnfs 2023
             </p>
           </div>
           <div

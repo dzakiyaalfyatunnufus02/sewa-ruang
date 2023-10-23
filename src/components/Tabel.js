@@ -1,13 +1,18 @@
 import React from "react";
 import "../components/Tabel.css";
 import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
-import { Nav, NavDropdown, NavLink, Navbar, Table } from "react-bootstrap";
+import { Button, Nav, NavDropdown, NavLink, Navbar, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Tabel = () => {
   return (
     <>
-      <div className="head-tabel">
+      <div
+        className="head-tabel"
+        style={{
+          backgroundColor: " #d6c7ae",
+        }}
+      >
         <Navbar
           bg="primary"
           data-bs-theme="dark"
@@ -23,7 +28,7 @@ const Tabel = () => {
               <Nav.Link href="/home">Home</Nav.Link>
               <Nav.Link href="/tableOrder">Approve List</Nav.Link>
               <Nav.Link href="/reportSewa">Report Sewa</Nav.Link>
-              <Nav.Link href="/table">Table</Nav.Link>
+              <Nav.Link href="/tabel">Table</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -66,10 +71,10 @@ const Tabel = () => {
                 <img src={ruang} alt="ruangan" className="img-home" />
               </div>
               <br />
-              <p>
+              <h5 style={{ width: "500px", textAlign: "center" }}>
                 Ciptakan ruangan impian anda dengan memilih fasilitas dengan
                 sesuai kebutuhan Anda
-              </p>
+              </h5>
               <br />
               <br />
               <br></br>
@@ -77,7 +82,7 @@ const Tabel = () => {
             </div>
           </div>
           <div className="table-tabel">
-            <Table striped bordered hover className="thead-tabel">
+            <Table striped bordered hover className="thead-tabel" style={{}}>
               <thead>
                 <tr>
                   <th>#</th>
@@ -91,70 +96,156 @@ const Tabel = () => {
                   <td>1</td>
                   <td>1</td>
                   <td>1</td>
-                  <td>Edit</td>
+                  <td style={{}}>
+                    <button className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>2</td>
                   <td>1</td>
-                  <td>Edit</td>
+                  <td style={{}}>
+                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td>3</td>
                   <td>1</td>
-                  <td>Edit</td>
+                  <td style={{}}>
+                    <button className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td>2</td>
                   <td>2</td>
-                  <td>Edit</td>
+                  <td style={{}}>
+                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>5</td>
                   <td>2</td>
                   <td>2</td>
-                  <td>Edit</td>
+                  <td style={{}}>
+                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>6</td>
                   <td>3</td>
                   <td>2</td>
-                  <td>
-                       <button>Edit</button>                        
-                       <button>Delete</button>                        
-                      </td>
+                  <td style={{}}>
+                    <button className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>7</td>
                   <td>1</td>
                   <td>3</td>
-                  <td>
-                       <button>Edit</button>                        
-                       <button>Delete</button>                        
-                      </td>
+                  <td style={{}}>
+                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>8</td>
                   <td>2</td>
                   <td>3</td>
-                  <td>
-                       <button>Edit</button>                        
-                       <button>Delete</button>                        
-                      </td>
+                  <td style={{}}>
+                    <button className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
                 <tr>
                   <td>9</td>
                   <td>3</td>
                   <td>3</td>
-                     <td>
-                       <button>Edit</button>                        
-                       <button>Delete</button>                        
-                      </td>
+                  <td style={{}}>
+                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-dlt-home">Delete</button>
+                  </td>
                 </tr>
               </tbody>
             </Table>
+            <div>
+              
+            <Link className="d-grid gap-2" to="/create">
+              <Button className="btn-lnk" size="lg">
+                Create
+              </Button>
+            </Link>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            textAlign: "center",
+            backgroundColor: " #6c5f5b",
+            width: "500px",
+            padding: "20px",
+            borderRadius: "40px 5px",
+            margin: "80px 80px 40px 80px",
+            marginLeft: "370px",
+          }}
+        >
+          <div
+            style={{
+              color: "white",
+            }}
+          >
+            <h3>Thank you for choosing Dz's Rental Rooms!</h3>
+            <p>For inquiries or assistance, please contact our support team.</p>
+          </div>
+        </div>
+
+        <div
+          className="icons"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "700px",
+            backgroundColor: "lightgray",
+            padding: "10px",
+
+            // border:"1px solid green",
+          }}
+        >
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
+            }
+          >
+            {" "}
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              Hak Cipta © dzkyalftnnfs2023
+            </p>
+          </div>
+          <div
+            className="a.href"
+            style={{
+              display: "flex",
+              gap: "20px",
+              color: "#967E76",
+            }}
+          >
+            <a href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+            {/* </div>
+<div> */}
+            <a href="https://www.twitter.com">Twitter</a>
           </div>
         </div>
       </div>
