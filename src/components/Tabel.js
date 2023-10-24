@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/Tabel.css";
 import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
-import { Button, Nav, NavDropdown, NavLink, Navbar, Table } from "react-bootstrap";
+import {
+  Button,
+  Nav,
+  NavDropdown,
+  NavLink,
+  Navbar,
+  Table,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Tabel = () => {
+  const [search, setSearch] = useState("");
+  const [accounts, setAccounts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(5);
+
+
+
+
+  const getAccounts = async () => {
+    try {
+      const respon = await axios.get("http://localhost:2222/accounts");
+      const allAccounts = respon.data;
+
+      // Apply search filter only for supervisor role
+      const filteredAccounts = allAccounts.filter(
+        (employee) =>
+          employee.username?.toLowerCase().includes(search?.toLowerCase()) &&
+          employee.role !== "supervisor"
+      );
+
+      setAccounts(filteredAccounts);
+      console.log(filteredAccounts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div
@@ -67,9 +101,7 @@ const Tabel = () => {
             <div className="body1-home">
               <h1>Dz's Rental Rooms</h1>
               <br />
-              <div className="img-wrap-home">
-                <img src={ruang} alt="ruangan" className="img-home" />
-              </div>
+
               <br />
               <h5 style={{ width: "500px", textAlign: "center" }}>
                 Ciptakan ruangan impian anda dengan memilih fasilitas dengan
@@ -81,6 +113,46 @@ const Tabel = () => {
               <br></br>
             </div>
           </div>
+          <div style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            margin:"10px"
+          }}>
+              <input
+                type="text"
+                placeholder="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{
+                  width: "400px",
+                  height: "40px",
+                  fontSize: "15px",
+                  borderRadius: "5px",
+                  marginRight: "10px",
+                }}
+              />
+              <span>
+                <select
+                  value={recordsPerPage}
+                  onChange={(e) =>
+                    setCurrentPage(1) ||
+                    setRecordsPerPage(Number(e.target.value))
+                  }
+                  style={{
+                    width: "100px",
+                    height: "40px",
+                    fontSize: "15px",
+                    borderRadius: "5px",
+                    marginRight: "10px",
+                  }}
+                >
+                  <option value={5}>5</option>
+                  <option value={10}>10</option>
+                  <option value={15}>15</option>
+                </select>
+              </span>
+            </div>
           <div className="table-tabel">
             <Table striped bordered hover className="thead-tabel" style={{}}>
               <thead>
@@ -106,7 +178,7 @@ const Tabel = () => {
                   <td>2</td>
                   <td>1</td>
                   <td style={{}}>
-                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-edt-tabel">Edit</button>
                     <button className="btn-dlt-home">Delete</button>
                   </td>
                 </tr>
@@ -124,7 +196,7 @@ const Tabel = () => {
                   <td>2</td>
                   <td>2</td>
                   <td style={{}}>
-                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-edt-tabel">Edit</button>
                     <button className="btn-dlt-home">Delete</button>
                   </td>
                 </tr>
@@ -133,7 +205,7 @@ const Tabel = () => {
                   <td>2</td>
                   <td>2</td>
                   <td style={{}}>
-                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-edt-tabel">Edit</button>
                     <button className="btn-dlt-home">Delete</button>
                   </td>
                 </tr>
@@ -151,7 +223,7 @@ const Tabel = () => {
                   <td>1</td>
                   <td>3</td>
                   <td style={{}}>
-                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-edt-tabel">Edit</button>
                     <button className="btn-dlt-home">Delete</button>
                   </td>
                 </tr>
@@ -169,19 +241,18 @@ const Tabel = () => {
                   <td>3</td>
                   <td>3</td>
                   <td style={{}}>
-                    <button  className="btn-edt-tabel">Edit</button>
+                    <button className="btn-edt-tabel">Edit</button>
                     <button className="btn-dlt-home">Delete</button>
                   </td>
                 </tr>
               </tbody>
             </Table>
             <div>
-              
-            <Link className="d-grid gap-2" to="/create">
-              <Button className="btn-lnk" size="lg">
-                Create
-              </Button>
-            </Link>
+              <Link className="d-grid gap-2" to="/create">
+                <Button className="btn-lnk" size="lg">
+                  Create
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

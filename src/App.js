@@ -9,7 +9,7 @@ import Tabel from "./components/Tabel";
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <Routes>
           <Route
@@ -54,7 +54,7 @@ function App() {
           />
           </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 

@@ -1,32 +1,15 @@
-.head-home {
-  background-color: #d6c7ae;
-}
-.body1-home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.img-home {
-  width: 700px;
-  border-radius: 10px;
-}
-.span-wrap-home {
-  display: flex;
-  gap: 25px;
-}
-.btn1-home {
+
+
+/* .btn1-home {
   width: 150px;
   height: 25px;
-  background-color: #6c5f5b;
   border: 0;
   border-radius: 10px;
-  color: #DADDB1;
   padding: 0px 5px 5px 5px;
 
-}
+} */
 .btn2-home {
-  width: 100px;
-  height: 30px;
+  /* width: 100px; */
   border: 0;
   background-color: #6c5f5b;
   border-radius: 10px;
@@ -36,105 +19,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 300px;
+  /* gap: 300px; */
   background-color: lightgray;
 }
-.img-rapat {
-  width: 400px;
-  height: 250px;
-  border-radius: 10px;
-}
-.img-keluarga {
-  width: 400px;
-  height: 250px;
-  border-radius: 10px;
-}
-.keluarga {
-  width: 300px;
-}
-.rapat {
-  width: 300px;
-}
-.body3-home {
-  text-align: center;
-  justify-content: center;
-}
-.collapse {
-    padding: 25px 10px;
-
-}
-.transisi {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  /* gap: 10px; */
-}
-.button-transisi-home {
-  width: 100px;
-  background-color: #6c5f5b;
-  cursor: pointer;
-  
-
-}
-#navbar{
-    background-color: #6c5f5b;
-    padding: 10px;
-}
-.transisi1 {
-  width: 600px;
-  background-color: #6c5f5b;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #d6c7ae;
-  /* display: flex;
-  gap: 135px;
-  padding: 15px 15px 0px 15px ; */
 
 
-}
-.span-home-svg1{
-    display: flex;
-    gap: 120px;
-    padding: 15px 15px 0px 15px ;
-    width: 800px;
-}
-.span-home-svg2{
-    display: flex;
-    gap: 115px;
-    padding: 15px 15px 0px 15px ;
-    width: 800px;
-}
-.span-home-svg3{
-    display: flex;
-    gap: 200px;
-    padding: 10px 0px 10px 15px ;
-  
-}
-.transisi2 {
-  width: 600px;
-  background-color: #6c5f5b;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #d6c7ae;
- 
-
-}
-.transisi3 {
-  width: 600px;
-  background-color: #6c5f5b;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #d6c7ae;
- 
 
 
-}
-a.href{
-    gap: 10px;
-    display: flex;
-    background-color: lightgray;
-}
-.open1{
-}
+
