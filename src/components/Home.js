@@ -12,7 +12,7 @@ const Home = () => {
   const [open3, setOpen3] = useState(false);
 
   return (
-    <div className="head-home bg-orange-100 w-screen sm:w-screen md:e-screen">
+    <div className="head-home bg-orange-100 w-screen sm:w-screen md:e-screen overvlow-x-hidden">
       <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -211,20 +211,21 @@ const Home = () => {
       <br />
       <div className="body1-home flex flex-col items-center body1-home grid grid-cols-2 gap-8 mx-auto p-4 lg:p-8">
         <h1 className="font-bold text-2xl">Dz's Rental Rooms</h1>
-        <div className="img-wrap-home">
-          <img src={ruang} alt="ruangan" className="img-home w-full w-[700px] rounded-[10px]" />
+        <div className="img-wrap-home flex justify-center text-center">
+          <img
+            src={ruang}
+            alt="ruangan"
+            className="img-home w-[250px] md:w-[550px] lg:w-[700px] rounded-[10px] "
+          />
         </div>
         <br />
         <p>Ciptakan ruangan impian anda</p>
-        <div className="bg-stone-500 rounded-[10px] text-[white]">
-        <button
-          to
-          className="bg-stone-500 h-[25px] text-[] p-2"
-        >
-          Daftar Sekarang!
-        </button>
+        <div className="bg-stone-500 rounded-[10px]  text-[white] p-2">
+          <button to className="bg-stone-500 h-[25px] text-[]">
+            Daftar Sekarang!
+          </button>
         </div>
-        
+
         <div className="span-wrap-home flex gap-[25px] ">
           <span className="span-home">
             <svg
@@ -290,43 +291,56 @@ const Home = () => {
           margin: "0px 0",
         }}
       >
-        <div className=" gap-[20px]  flex items-center justify-center ">
-          <div className="img-rapat-home w-[400px] h-[250px] gap:[20px]">
+        <div className="gap-[20px] flex flex-col md:flex md:flex-row items-center justify-center">
+          <div className="img-rapat-home w-full md:w-[450px] h-[250px]">
             <img
               src={rapat}
-              alt="ruang-rapat"
-              className="img-rapat rounded-[5px] w-[400px] h-[250px]"
+              alt="ruang-keluarga"
+              className="img-keluarga rounded-[5px]
+              w-full md:w-[450px] h-full 
+                "
             />
           </div>
-          <div className="rapat w-[300px]">
-            <h1 className="font-bold text-3xl w-[300px]">Ruang Rapat Indoor</h1>
+          <div className="rapat w-full  md:w-[450px] text-center space-y-4">
+            <h1 className="font-bold text-3xl w-full ">Ruang Rapat Indoor</h1>
             <p>
               Ruang rapat yang indah dan nyaman untuk mendukung kelancaran rapat
               Anda
             </p>
-            <button className="btn2-home  w-[80px] p-[px] ">Lihat Hasil</button>
+            <button className="btn2-home    py-[4px] px-[10px]">
+              Lihat Detail
+            </button>
           </div>
         </div>
         <br />
         <br />
         <br />
-        <div className="body2-home gap-[20px] flex  items-center justify-center">
-          <div className="rapat w-[300px]">
-            <h1 className="font-bold text-3xl w-[300px]">Ruang Keluarga</h1>
-            <p>
-              Ruang keluarga dengan sensasi alam yang menenangkan siap membuat
-              keluarga Anda lebih harmonis
-            </p>
-            <button className="btn2-home w-[80px] p-[0.2px]">
-              Lihat Detail
-            </button>
-          </div>
-          <div className="img-rapat-home w-[400px] h-[250px] gap:[20px]">
+        <div className="gap-[20px] flex flex-col md:flex md:flex-row items-center justify-center ">
+          <div className="img-rapat-home w-full md:w-[450px] h-[250px] block md:hidden ">
             <img
               src={keluarga}
               alt="ruang-keluarga"
               className="img-keluarga rounded-[5px]
-                w-[400px] h-[250px]
+              w-full md:w-[650px] h-full block md:hidden
+                "
+            />
+          </div>
+          <div className="rapat w-full md:w-[450px]  text-center space-y-4" >
+            <h1 className="font-bold text-3xl w-full">Ruang Keluarga</h1>
+            <p>
+              Ruang keluarga dengan sensasi alam yang menenangkan siap membuat
+              keluarga Anda lebih harmonis
+            </p>
+            <button className="btn2-home py-[4px] px-[10px]">
+              Lihat Detail
+            </button>
+          </div>
+          <div className="img-rapat-home w-[20px] md:w-[450px] h-[250px] hidden md:block">
+            <img
+              src={keluarga}
+              alt="ruang-keluarga"
+              className="img-keluarga rounded-[5px]
+              w-[10px] md:w-[450px] h-full hidden md:block
                 "
             />
           </div>
@@ -377,10 +391,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <div
-        className="icons flex justify-center bg-gray-400 p-[10px] "
-       
-      >
+      <div className="icons block text-center md:flex md:justify-between  bg-gray-400 p-[10px] ">
         <div
           style={
             {
@@ -397,9 +408,8 @@ const Home = () => {
             Hak Cipta © dzkyalftnnfs 2023
           </p>
         </div>
-        <div>___</div>
         <div
-          className="a.href"
+          className="a.href text-center flex justify-center"
           style={{
             display: "flex",
             gap: "20px",

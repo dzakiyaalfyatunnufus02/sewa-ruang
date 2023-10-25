@@ -1,11 +1,10 @@
 .table.tabel{
-    text-align: center;
    }
 .thead-tabel{
-padding: 0px;
+/* padding: 0px;
 text-align: center;
-width: 800px;
-margin-left: 230px;
+width: 800px; */
+/* margin-left: 230px; */
 }
 .body1-home {
     display: flex;
