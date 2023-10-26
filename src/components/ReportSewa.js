@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../components/Tabel.css";
+import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
 import {
   Button,
   Nav,
@@ -11,31 +12,30 @@ import {
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Tabel = () => {
+const ReportSewa = () => {
   const [search, setSearch] = useState("");
   const [accounts, setAccounts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
 
-  function toggleUserMenu() {
-    var userMenu = document.getElementById("user-menu");
-    var isExpanded = userMenu.getAttribute("aria-expanded");
+  const getAccounts = async () => {
+    try {
+      const respon = await axios.get("http://localhost:2222/accounts");
+      const allAccounts = respon.data;
 
-    if (isExpanded === "true") {
-        // User menu is currently open, close it
-        userMenu.setAttribute("aria-expanded", "false");
-    } else {
-        // User menu is currently closed, open it and show the alert
-        userMenu.setAttribute("aria-expanded", "true");
-        alert("User menu clicked!");
+      // Apply search filter only for supervisor role
+      const filteredAccounts = allAccounts.filter(
+        (employee) =>
+          employee.username?.toLowerCase().includes(search?.toLowerCase()) &&
+          employee.role !== "supervisor"
+      );
+
+      setAccounts(filteredAccounts);
+      console.log(filteredAccounts);
+    } catch (error) {
+      console.log(error);
     }
-}
-
-function signOut() {
-    // Add sign-out logic here
-    alert("Signing out...");
-}
-
+  };
   return (
     <>
       <div
@@ -46,8 +46,8 @@ function signOut() {
       >
         <nav class="bg-gray-800">
           <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between ">
-              <div class="absolute inset-y-0 left-0 flex items-center md:hidden blocn ">
+            <div class="relative flex h-16 items-center justify-between">
+              <div class="absolute inset-y-0 left-0 flex items-center md:hidden block">
                 <button
                   type="button"
                   class=" relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -105,7 +105,7 @@ function signOut() {
                     >
                       Home
                     </a>
-                    
+
                     <a
                       href="/tabel"
                       class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -181,7 +181,6 @@ function signOut() {
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
                     tabindex="-1"
-                    id="user-menu"
                   >
                     <a
                       href="#"
@@ -202,13 +201,12 @@ function signOut() {
                       Settings
                     </a>
                     <a
-                      href="/sambutan"
+                      href="#"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
                       id="user-menu-item-2"
-                       onClick="signOut()"
-                            >
+                    >
                       Sign out
                     </a>
                   </div>
@@ -231,7 +229,7 @@ function signOut() {
                 href="/tabel"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
-                Rooms
+               Rooms
               </a>
               <a
                 href="/order"
@@ -258,13 +256,11 @@ function signOut() {
         <div className="body-tabel">
           <div>
             <div className="body1-home">
-              <h1 className="font-bold text-2xl">Dz's Rental Rooms</h1>
+              <h1 className="font-bold text-2xl">Dz's Rental Report Sewa</h1>
               <br />
 
               <br />
-              <h5
-                className="w-[250px] md:w-[500px] text-center text-[15px] md:text-[18px] lg:text-[20px]"
-              >
+              <h5 className="w-[250px] md:w-[500px] text-center text-[15px] md:text-[18px] lg:text-[20px]">
                 Ciptakan ruangan impian anda dengan memilih fasilitas dengan
                 sesuai kebutuhan Anda
               </h5>
@@ -274,13 +270,13 @@ function signOut() {
               <br></br>
             </div>
           </div>
-          <div className="flex items-center gap-[10px] md:gap-[25px] justify-center m-[10px]">
+          <div className="flex items-center gap-[10px] md:gap-[25px] justify-center m-[10px] md:p-[10px]">
             <input
               type="text"
               placeholder="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-[150px] h-[30px] md:w-[200px] lg:w-[400px] lg:h-[40px] text-[15px] rounded-[5px] md:py-[10px] md:px-[10px] p-[5px]"
+              className="w-[150px] h-[30px] md:w-[200px] lg:w-[400px] lg:h-[40px] text-[15px] rounded-[5px]  md:py-[10px] md:px-[10px] p-[5px]"
             />
             <span>
               <select
@@ -297,22 +293,31 @@ function signOut() {
             </span>
           </div>
           <div className="table-tabel ">
-            <div class="rounded-lg  w-full lg:px-full md:px-[300px] flex flex-col items-center justify-center text-center p-[10px]">
-              <div class="overflow-x-auto rounded-t-lg lg:w-[700px] md:w-[500px] w-full ">
-                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+            <div class="rounded-lg  w-full lg:px-5 md:px-[25px] flex flex-col items-center justify-center text-center p-[10px]">
+              <div class="overflow-x-auto rounded-t-lg w-full">
+                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm border-2 boder-red-400">
                   <thead class="ltr:text-left rtl:text-right">
                     <tr>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        NO
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        DATE TIME
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        Lantai{" "}
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        CAPACITY{" "}
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        Ruang
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        SNACK{" "}
                       </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        Action
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        LUNCH{" "}
+                      </th>
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        EXTRATIME{" "}
+                      </th>
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        BOOKING{" "}
+                      </th>
+                      <th class="whitespace-nowrap px-4 py-2 text-[13px]  md:font-medium text-gray-900">
+                        Action{" "}
                       </th>
                     </tr>
                   </thead>
@@ -320,13 +325,22 @@ function signOut() {
                   <tbody class="divide-y divide-gray-200">
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        1{" "}
+                        08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        3 poeple{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        3 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -340,13 +354,22 @@ function signOut() {
 
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        2
+                        08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        2 pepole{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        2 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -360,32 +383,22 @@ function signOut() {
 
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        3{" "}
+                        08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        4 pepole
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        tidak ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        4{" "}
+                        tidak ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1
+                        5 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -398,32 +411,22 @@ function signOut() {
                     </tr>
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        5{" "}
+                        08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        5 pepole{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        ada
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        6{" "}
+                        ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        ada
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        tidak ada
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -436,32 +439,22 @@ function signOut() {
                     </tr>
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        7{" "}
+                        08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        7 people{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        8{" "}
+                        tidak ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        7 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -474,32 +467,22 @@ function signOut() {
                     </tr>
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        9{" "}
+                        1 08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        1 people{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        tidak ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        10{" "}
+                        tidak ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
+                        ada{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
+                        1 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -512,13 +495,22 @@ function signOut() {
                     </tr>
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        11{" "}
+                        1 08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
+                        5 people{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        5 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -531,13 +523,134 @@ function signOut() {
                     </tr>
                     <tr>
                       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        12{" "}
+                        1 08/05/2023 03:05:15 PM{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
+                        4 people{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
+                        ada
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        10 days{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                          Edit
+                        </button>
+                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        1 08/05/2023 03:05:15 PM{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        10 people{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        1 week{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                          Edit
+                        </button>
+                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        1 08/05/2023 03:05:15 PM{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        6 people{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        7 days{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                          Edit
+                        </button>
+                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        1 08/05/2023 03:05:15 PM{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        7 people{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        3 days{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                          Edit
+                        </button>
+                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        1 08/05/2023 03:05:15 PM{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        6 people{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        tidak ada{" "}
+                      </td>
+                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                        4 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                         <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
@@ -629,50 +742,48 @@ function signOut() {
                 </ol>
               </div>
             </div>
-            <div>
+            <div className="flex justify-center ">
+                <button className="text-[13px] flex justify-center items-center md:text-[15px] lg:text-[18px] bg-[#B3A492] w-[150px] p-[3px] md:w-[400px] lg:w-[500px] md:rounded-[20px] rounded-[10px] md:h-[35px]">
               <Link className="d-grid gap-2 flex justify-center " to="/create">
-                <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 w-[150px] md:w-[400px] lg:w-[500px]">
                   Create
-                </Button>
               </Link>
+                </button>
             </div>
           </div>
         </div>
         <div className=" flex items-center justify-center">
           <div className="text-[white] text-center bg-[#6c5f5b]  w-[300px]   md:w-[500px] lg:w-[700px]  md:w-[500px]   rounded-tr-[50px] rounded-bl-[50px] lg:p-[40px] p-[20px] lg:mt-[20px] lg:mb-[20px] md:mt-[15px] md:mb-[15px] mt-[10px] mb-[10px]">
-            <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">Thank you for choosing Dz's Rental Costumer!</h3>
-            <p className="text-[10px] md:text-[14px] lg:text-[18px]">For inquiries or assistance, please contact our support team.</p>
+            <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">
+              Thank you for choosing Dz's Rental Rooms!
+            </h3>
+            <p className="text-[10px] md:text-[14px] lg:text-[18px]">
+              For inquiries or assistance, please contact our support team.
+            </p>
           </div>
         </div>
 
         <div className="icons block text-center md:flex md:justify-between  bg-gray-400 p-[10px] ">
-        <div
-          style={
-            {
-              // border:"1px solid yellow",
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
             }
-          }
-        >
-          {" "}
-          <p 
-          className="text-[13px] md:text-[15x] lg:text-[18px] text-black"
-           
           >
-            Hak Cipta © dzkyalftnnfs 2023
-          </p>
-        </div>
-        <div
-          className="a.href text-center flex justify-center text-white text-[13px] gap-[10px] md:text-[15px] lg:text-[20px]"
-         
-        >
-          <a href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-          {/* </div>
+            {" "}
+            <p className="text-[13px] md:text-[15x] lg:text-[18px] text-black">
+              Hak Cipta © dzkyalftnnfs 2023
+            </p>
+          </div>
+          <div className="a.href text-center flex justify-center text-white text-[13px] gap-[10px] md:text-[15px] lg:text-[20px]">
+            <a className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+            {/* </div>
 <div> */}
-          <a href="https://www.twitter.com">Twitter</a>
+            <a href="https://www.twitter.com" className=" hover:underline">Twitter</a>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
 };
-export default Tabel;
+export default ReportSewa;

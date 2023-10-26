@@ -18,26 +18,26 @@ const Register = () => {
               <div id="input-register">
                 {" "}
                 <input
-                  placeholder="First Name"
+                  placeholder="First Name "
                   type="text"
-                  className="input1-register"
+                  className="input1-register p-[10px]"
                 />
                 <input
-                  placeholder="Last Name"
+                  placeholder="Last Name "
                   type="text"
-                  className="input1-register"
+                  className="input1-register p-[10px]"
                 />
                 <input
-                  placeholder="Your Email"
+                  placeholder="Your Email "
                   type="text"
-                  className="input1-register"
+                  className="input1-register p-[10px]"
                 />
               </div>
               <div className="inpt-btn-register">
                 <input
                   placeholder="Your Password"
                   type="password"
-                  className="input2-register"
+                  className="input2-register p-[10px]"
                 />
                 <button className="btn-register"> Submit</button>
               </div>

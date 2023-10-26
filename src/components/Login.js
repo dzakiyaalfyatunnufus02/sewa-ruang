@@ -22,14 +22,14 @@ const Login = () => {
             <input
               placeholder="Your Email"
               type="text"
-              className="input1-login"
+              className="input1-login p-[10px]"
             />
           </div>
           <div className="inpt-btn-login">
             <input
               placeholder="Your Password"
               type="password"
-              className="input2-login"
+              className="input2-login p-[10px]"
             />
             <button className="btn-login"> SIGN UP</button>
           </div>
@@ -38,7 +38,7 @@ const Login = () => {
           <br/>
           <div className="register-login">
             <p>Belum punya akun silahkan register <></>
-            <Link to="/register">REGISTER!</Link>
+            <Link to="/register" className="hover:underline">REGISTER!</Link>
             </p>
            
           </div>

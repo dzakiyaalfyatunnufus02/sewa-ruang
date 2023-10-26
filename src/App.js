@@ -6,6 +6,9 @@ import Login from "./components/Login";
 import PrivateRoute from "./privat-router/PrivatRoute";
 import Register from "./components/Register";
 import Tabel from "./components/Tabel";
+import Costumer from "./components/Costumer";
+import Order from "./components/Order";
+import ReportSewa from "./components/ReportSewa";
 
 function App() {
   return (
@@ -49,6 +52,30 @@ function App() {
             element={
               <PrivateRoute>
                 <Tabel />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/costumer"
+            element={
+              <PrivateRoute>
+                <Costumer />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/order"
+            element={
+              <PrivateRoute>
+                <Order />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reportsewa"
+            element={
+              <PrivateRoute>
+                <ReportSewa />
               </PrivateRoute>
             }
           />
