@@ -5,6 +5,7 @@ import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
 import "../components/Home.css";
 import { Container, Nav, NavDropdown, NavLink, Navbar } from "react-bootstrap";
 import { Button, Col, Collapse, ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [open1, setOpen1] = useState(false);
@@ -12,7 +13,7 @@ const Home = () => {
   const [open3, setOpen3] = useState(false);
 
   return (
-    <div className="head-home bg-orange-100 w-screen sm:w-screen md:e-screen overvlow-x-hidden">
+    <div className="head-home bg-orange-100 w-screen sm:w-screen md:e-screen  overvlow-x-hidden">
        <nav class="bg-gray-800">
           <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between ">
@@ -170,7 +171,7 @@ const Home = () => {
                       Settings
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
@@ -235,7 +236,7 @@ const Home = () => {
         <p>Ciptakan ruangan impian anda</p>
         <div className="bg-stone-500 rounded-[10px]  text-[white] p-2">
           <button to className="bg-stone-500 h-[25px] text-[]">
-            Daftar Sekarang!
+            <Link to="/register">Daftar Sekarang!</Link>
           </button>
         </div>
 
@@ -404,7 +405,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <div className="icons block text-center md:flex md:justify-between  bg-gray-400 p-[10px] ">
+      <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
         <div
           style={
             {
@@ -422,17 +423,17 @@ const Home = () => {
           </p>
         </div>
         <div
-          className="a.href text-center text-[#967E76] flex justify-center"
+          className="a.href text-center text-white flex justify-center"
           style={{
             display: "flex",
             gap: "20px",
             color: "",
           }}
         >
-          <a href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
           {/* </div>
 <div> */}
-          <a href="https://www.twitter.com">Twitter</a>
+          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
         </div>
       </div>
     </div>

@@ -201,7 +201,7 @@ const Costumer = () => {
                       Settings
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
@@ -291,6 +291,13 @@ const Costumer = () => {
                 <option value={15}>15</option>
               </select>
             </span>
+            <div>
+              <Link className="d-grid gap-2 flex justify-center " to="/addcostumer">
+                <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 text-center flex items center justify-center w-[50px] md:w-[80px] lg:w-[100px]">
+                  Create
+                </Button>
+              </Link>
+            </div>
           </div>
           <div className="table-tabel ">
             <div class="rounded-lg  w-full lg:px-full md:px-[300px] flex flex-col items-center justify-center text-center p-[10px]">
@@ -625,16 +632,10 @@ const Costumer = () => {
                 </ol>
               </div>
             </div>
-            <div>
-              <Link className="d-grid gap-2 flex justify-center " to="/create">
-                <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 w-[150px] md:w-[400px] lg:w-[500px]">
-                  Create
-                </Button>
-              </Link>
-            </div>
+           
           </div>
         </div>
-        <div className=" flex items-center justify-center">
+        <div className=" flex items-center justify-center md:mt-[20px] md:mb-[15px] lg:mt-[27px] lg:mb-[22px] mt-[10px] mb-[12px]">
           <div className="text-[white] text-center bg-[#6c5f5b]  w-[300px]   md:w-[500px] lg:w-[700px]  md:w-[500px]   rounded-tr-[50px] rounded-bl-[50px] lg:p-[40px] p-[20px] lg:mt-[20px] lg:mb-[20px] md:mt-[15px] md:mb-[15px] mt-[10px] mb-[10px]">
             <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">
               Thank you for choosing Dz's Rental Rooms!
@@ -645,26 +646,31 @@ const Costumer = () => {
           </div>
         </div>
 
-        <div className="icons block text-center md:flex md:justify-between  bg-gray-400 p-[10px] ">
-          <div
-            style={
-              {
-                // border:"1px solid yellow",
-              }
+        <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px]  ">
+        <div
+          style={
+            {
+              // border:"1px solid yellow",
             }
+          }
+        >
+          {" "}
+          <p
+            className="text-[12px] lg:text-[16px]"
           >
-            {" "}
-            <p className="text-[13px] md:text-[15x] lg:text-[18px] text-black">
-              Hak Cipta © dzkyalftnnfs 2023
-            </p>
-          </div>
-          <div className="a.href text-center flex justify-center text-white text-[13px] gap-[10px] md:text-[15px] lg:text-[20px]">
-            <a href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-            {/* </div>
-<div> */}
-            <a href="https://www.twitter.com">Twitter</a>
-          </div>
+            Hak Cipta © dzkyalftnnfs 2023
+          </p>
         </div>
+        <div
+          className="a.href text-center text-white flex justify-center gap-[20px] text-[12px] lg:text-[16px]"
+          
+        >
+          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+          {/* </div>
+<div> */}
+          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+        </div>
+      </div>
       </div>
     </>
   );

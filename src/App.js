@@ -9,6 +9,10 @@ import Tabel from "./components/Tabel";
 import Costumer from "./components/Costumer";
 import Order from "./components/Order";
 import ReportSewa from "./components/ReportSewa";
+import AddCostumer from "./components/AddCostumer";
+import AddTabel from "./components/AddTabel";
+import AddReportSewa from "./components/AddReportSewa";
+import AddOrder from "./components/AddOrder";
 
 function App() {
   return (
@@ -24,7 +28,7 @@ function App() {
             }
           />
           <Route
-            path="/sambutan"
+            path="/"
             element={
               <PrivateRoute>
                 <Sambutan />
@@ -76,6 +80,40 @@ function App() {
             element={
               <PrivateRoute>
                 <ReportSewa />
+              </PrivateRoute>
+            }
+          />
+         
+          <Route
+            path="/addCostumer"
+            element={
+              <PrivateRoute>
+                <AddCostumer />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/addtabel"
+            element={
+              <PrivateRoute>
+                <AddTabel />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/addreportsewa"
+            element={
+              <PrivateRoute>
+                <AddReportSewa />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/addorder"
+            element={
+              <PrivateRoute>
+                <AddOrder
+                 />
               </PrivateRoute>
             }
           />

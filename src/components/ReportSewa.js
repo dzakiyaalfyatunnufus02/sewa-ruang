@@ -201,7 +201,7 @@ const ReportSewa = () => {
                       Settings
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
@@ -291,6 +291,13 @@ const ReportSewa = () => {
                 <option value={15}>15</option>
               </select>
             </span>
+            <div>
+              <Link className="d-grid gap-2 flex justify-center " to="/create">
+                <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 text-center flex items center justify-center w-[50px] md:w-[80px] lg:w-[100px]">
+                  Create
+                </Button>
+              </Link>
+            </div>
           </div>
           <div className="table-tabel ">
             <div class="rounded-lg  w-full lg:px-5 md:px-[25px] flex flex-col items-center justify-center text-center p-[10px]">
@@ -742,13 +749,7 @@ const ReportSewa = () => {
                 </ol>
               </div>
             </div>
-            <div className="flex justify-center ">
-                <button className="text-[13px] flex justify-center items-center md:text-[15px] lg:text-[18px] bg-[#B3A492] w-[150px] p-[3px] md:w-[400px] lg:w-[500px] md:rounded-[20px] rounded-[10px] md:h-[35px]">
-              <Link className="d-grid gap-2 flex justify-center " to="/create">
-                  Create
-              </Link>
-                </button>
-            </div>
+
           </div>
         </div>
         <div className=" flex items-center justify-center">
@@ -761,27 +762,37 @@ const ReportSewa = () => {
             </p>
           </div>
         </div>
-
-        <div className="icons block text-center md:flex md:justify-between  bg-gray-400 p-[10px] ">
-          <div
-            style={
-              {
-                // border:"1px solid yellow",
-              }
+        <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
+        <div
+          style={
+            {
+              // border:"1px solid yellow",
             }
+          }
+        >
+          {" "}
+          <p
+            style={{
+              margin: 0,
+            }}
           >
-            {" "}
-            <p className="text-[13px] md:text-[15x] lg:text-[18px] text-black">
-              Hak Cipta © dzkyalftnnfs 2023
-            </p>
-          </div>
-          <div className="a.href text-center flex justify-center text-white text-[13px] gap-[10px] md:text-[15px] lg:text-[20px]">
-            <a className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-            {/* </div>
-<div> */}
-            <a href="https://www.twitter.com" className=" hover:underline">Twitter</a>
-          </div>
+            Hak Cipta © dzkyalftnnfs 2023
+          </p>
         </div>
+        <div
+          className="a.href text-center text-white flex justify-center"
+          style={{
+            display: "flex",
+            gap: "20px",
+            color: "",
+          }}
+        >
+          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+          {/* </div>
+<div> */}
+          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+        </div>
+      </div>
       </div>
     </>
   );
