@@ -2,12 +2,12 @@ import React from "react";
 
 
 
-const AddTabel = () => {
+const EditTabel = () => {
 
 
     return(
         <>
-         <div className="bg-[#B3A492] lg:w-full md:w-[100%] md:h-[100vh] lg:p-[165px] md:p-[100px] p-[86px]  ">
+         <div className="bg-[#B3A492] lg:w-full md:w-[100%] md:h-[100vh] lg:p-[165px] md:p-[100px] py-[100px] px-[30px] h-[100vh] ">
         <center>
           {" "}
           <div className=" ">
@@ -16,11 +16,11 @@ const AddTabel = () => {
               <div className=" lg:gap-[10px] md:gap-[100px] ">
                 <div className="lg:gap-[10px] ">
                   <p className="font-bold lg:mb-[10px] md:mb-[8px] mb-[5px] lg:text-[25px]">
-                    Dz's Create Rooms
+                    Dz's Edit Rooms
                   </p>
                   <p className="italic">
                     {" "}
-                    Buat ruangan baru dengan mengisi formulir di samping ini dan
+                    Ubah ruangan dengan mengisi formulir di samping ini dan
                     nikmati kenyaman fasilitas kami
                   </p>
                 </div>
@@ -59,4 +59,4 @@ const AddTabel = () => {
         </>
     )
 }
-export default AddTabel;
+export default EditTabel;

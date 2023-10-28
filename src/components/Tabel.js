@@ -22,19 +22,19 @@ const Tabel = () => {
     var isExpanded = userMenu.getAttribute("aria-expanded");
 
     if (isExpanded === "true") {
-        // User menu is currently open, close it
-        userMenu.setAttribute("aria-expanded", "false");
+      // User menu is currently open, close it
+      userMenu.setAttribute("aria-expanded", "false");
     } else {
-        // User menu is currently closed, open it and show the alert
-        userMenu.setAttribute("aria-expanded", "true");
-        alert("User menu clicked!");
+      // User menu is currently closed, open it and show the alert
+      userMenu.setAttribute("aria-expanded", "true");
+      alert("User menu clicked!");
     }
-}
+  }
 
-function signOut() {
+  function signOut() {
     // Add sign-out logic here
     alert("Signing out...");
-}
+  }
 
   return (
     <>
@@ -105,7 +105,7 @@ function signOut() {
                     >
                       Home
                     </a>
-                    
+
                     <a
                       href="/tabel"
                       class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -207,8 +207,8 @@ function signOut() {
                       role="menuitem"
                       tabindex="-1"
                       id="user-menu-item-2"
-                       onClick="signOut()"
-                            >
+                      onClick="signOut()"
+                    >
                       Sign out
                     </a>
                   </div>
@@ -219,7 +219,6 @@ function signOut() {
 
           <div class="block md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
-              
               <a
                 href="/home"
                 class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
@@ -262,9 +261,7 @@ function signOut() {
               <br />
 
               <br />
-              <h5
-                className="w-[250px] md:w-[500px] text-center text-[15px] md:text-[18px] lg:text-[20px]"
-              >
+              <h5 className="w-[250px] md:w-[500px] text-center text-[15px] md:text-[18px] lg:text-[20px]">
                 Ciptakan ruangan impian anda dengan memilih fasilitas dengan
                 sesuai kebutuhan Anda
               </h5>
@@ -296,7 +293,10 @@ function signOut() {
               </select>
             </span>
             <div>
-              <Link className="d-grid gap-2 flex justify-center " to="/addtabel">
+              <Link
+                className="d-grid gap-2 flex justify-center "
+                to="/addtabel"
+              >
                 <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 text-center flex items center justify-center w-[50px] md:w-[80px] lg:w-[100px]">
                   Create
                 </Button>
@@ -336,9 +336,12 @@ function signOut() {
                         1{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -356,9 +359,12 @@ function signOut() {
                         2{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -376,9 +382,12 @@ function signOut() {
                         3{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -395,9 +404,12 @@ function signOut() {
                         1
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -414,9 +426,12 @@ function signOut() {
                         3{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -433,9 +448,13 @@ function signOut() {
                         3{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -452,9 +471,13 @@ function signOut() {
                         1{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -471,9 +494,12 @@ function signOut() {
                         2{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -490,9 +516,13 @@ function signOut() {
                         3{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -509,9 +539,13 @@ function signOut() {
                         1{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -528,9 +562,12 @@ function signOut() {
                         2{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/edittabel">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -547,9 +584,14 @@ function signOut() {
                         3{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="edittabel">
+                          {" "}
+                         
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -559,7 +601,7 @@ function signOut() {
                 </table>
               </div>
 
-              <div class="rounded-b-lg border-t border-gray-200 px-4 py-2">
+              <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
                 <ol class="flex justify-end gap-1 text-xs font-medium">
                   <li>
                     <a
@@ -585,13 +627,13 @@ function signOut() {
                   <li>
                     <a
                       href="#"
-                      class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                      className="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
                     >
                       1
                     </a>
                   </li>
 
-                  <li class="block h-8 w-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+                  <li className="block h-8 w-8 rounded border-stone-600 bg-stone-600 text-center leading-8 text-white">
                     2
                   </li>
 
@@ -636,47 +678,58 @@ function signOut() {
                 </ol>
               </div>
             </div>
-          
           </div>
         </div>
         <div className=" flex items-center justify-center">
           <div className="text-[white] text-center bg-[#6c5f5b]  w-[300px]   md:w-[500px] lg:w-[700px]  md:w-[500px]   rounded-tr-[50px] rounded-bl-[50px] lg:p-[40px] p-[20px] lg:mt-[20px] lg:mb-[20px] md:mt-[15px] md:mb-[15px] mt-[10px] mb-[10px]">
-            <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">Thank you for choosing Dz's Rental Costumer!</h3>
-            <p className="text-[10px] md:text-[14px] lg:text-[18px]">For inquiries or assistance, please contact our support team.</p>
+            <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">
+              Thank you for choosing Dz's Rental Costumer!
+            </h3>
+            <p className="text-[10px] md:text-[14px] lg:text-[18px]">
+              For inquiries or assistance, please contact our support team.
+            </p>
           </div>
         </div>
 
         <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
-        <div
-          style={
-            {
-              // border:"1px solid yellow",
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
             }
-          }
-        >
-          {" "}
-          <p
+          >
+            {" "}
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              Hak Cipta © dzkyalftnnfs 2023
+            </p>
+          </div>
+          <div
+            className="a.href text-center text-white flex justify-center"
             style={{
-              margin: 0,
+              display: "flex",
+              gap: "20px",
+              color: "",
             }}
           >
-            Hak Cipta © dzkyalftnnfs 2023
-          </p>
-        </div>
-        <div
-          className="a.href text-center text-white flex justify-center"
-          style={{
-            display: "flex",
-            gap: "20px",
-            color: "",
-          }}
-        >
-          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-          {/* </div>
+            <a
+              className=" hover:underline"
+              href="https://www.instagram.com/dzkyalfyatnnfs/"
+              target="_blank"
+            >
+              Instagram
+            </a>
+            {/* </div>
 <div> */}
-          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+            <a className=" hover:underline" href="https://www.twitter.com" target="_blank">
+              Twitter
+            </a>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

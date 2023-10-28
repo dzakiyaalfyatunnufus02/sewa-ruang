@@ -217,7 +217,6 @@ const ReportSewa = () => {
 
           <div class="block md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
-              
               <a
                 href="/home"
                 class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
@@ -229,7 +228,7 @@ const ReportSewa = () => {
                 href="/tabel"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
-               Rooms
+                Rooms
               </a>
               <a
                 href="/order"
@@ -292,7 +291,10 @@ const ReportSewa = () => {
               </select>
             </span>
             <div>
-              <Link className="d-grid gap-2 flex justify-center " to="/create">
+              <Link
+                className="d-grid gap-2 flex justify-center "
+                to="/addreportsewa"
+              >
                 <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 text-center flex items center justify-center w-[50px] md:w-[80px] lg:w-[100px]">
                   Create
                 </Button>
@@ -350,9 +352,13 @@ const ReportSewa = () => {
                         3 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -379,9 +385,11 @@ const ReportSewa = () => {
                         2 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -408,9 +416,11 @@ const ReportSewa = () => {
                         5 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -436,9 +446,12 @@ const ReportSewa = () => {
                         tidak ada
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -464,9 +477,12 @@ const ReportSewa = () => {
                         7 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -492,9 +508,12 @@ const ReportSewa = () => {
                         1 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -520,9 +539,12 @@ const ReportSewa = () => {
                         5 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -548,9 +570,12 @@ const ReportSewa = () => {
                         10 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -576,9 +601,12 @@ const ReportSewa = () => {
                         1 week{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -604,9 +632,12 @@ const ReportSewa = () => {
                         7 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -632,9 +663,11 @@ const ReportSewa = () => {
                         3 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -660,9 +693,12 @@ const ReportSewa = () => {
                         4 days{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editreportsewa">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -749,7 +785,6 @@ const ReportSewa = () => {
                 </ol>
               </div>
             </div>
-
           </div>
         </div>
         <div className=" flex items-center justify-center">
@@ -763,36 +798,45 @@ const ReportSewa = () => {
           </div>
         </div>
         <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
-        <div
-          style={
-            {
-              // border:"1px solid yellow",
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
             }
-          }
-        >
-          {" "}
-          <p
+          >
+            {" "}
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              Hak Cipta © dzkyalftnnfs 2023
+            </p>
+          </div>
+          <div
+            className="a.href text-center text-white flex justify-center"
+
             style={{
-              margin: 0,
+              display: "flex",
+              gap: "20px",
+              color: "",
             }}
           >
-            Hak Cipta © dzkyalftnnfs 2023
-          </p>
-        </div>
-        <div
-          className="a.href text-center text-white flex justify-center"
-          style={{
-            display: "flex",
-            gap: "20px",
-            color: "",
-          }}
-        >
-          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-          {/* </div>
+            <a
+              className=" hover:underline"
+              target="_blank"
+              href="https://www.instagram.com/dzkyalfyatnnfs/"
+            >
+              Instagram
+            </a>
+            {/* </div>
 <div> */}
-          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+            <a className=" hover:underline" href="https://www.twitter.com" target="_blank">
+              Twitter
+            </a>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

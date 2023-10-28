@@ -105,7 +105,7 @@ const Costumer = () => {
                     >
                       Home
                     </a>
-                    
+
                     <a
                       href="/tabel"
                       class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -292,7 +292,10 @@ const Costumer = () => {
               </select>
             </span>
             <div>
-              <Link className="d-grid gap-2 flex justify-center " to="/addcostumer">
+              <Link
+                className="d-grid gap-2 flex justify-center "
+                to="/addcostumer"
+              >
                 <Button className="text-[13px] md:text-[15px] lg:text-[18px] bg-stone-700 text-center flex items center justify-center w-[50px] md:w-[80px] lg:w-[100px]">
                   Create
                 </Button>
@@ -332,9 +335,12 @@ const Costumer = () => {
                         kredit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
+
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -352,9 +358,11 @@ const Costumer = () => {
                         debit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -372,9 +380,12 @@ const Costumer = () => {
                         cash{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -391,9 +402,12 @@ const Costumer = () => {
                         cash
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -410,9 +424,12 @@ const Costumer = () => {
                         cash{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -429,12 +446,15 @@ const Costumer = () => {
                         debit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
+                            Delete
+                          </button>
                       </td>
                     </tr>
                     <tr>
@@ -448,9 +468,12 @@ const Costumer = () => {
                         kredit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -467,9 +490,12 @@ const Costumer = () => {
                         debit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -486,12 +512,15 @@ const Costumer = () => {
                         cash{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
+                            Delete
+                          </button>
                       </td>
                     </tr>
                     <tr>
@@ -505,9 +534,11 @@ const Costumer = () => {
                         kredit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -524,9 +555,11 @@ const Costumer = () => {
                         debit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -543,9 +576,12 @@ const Costumer = () => {
                         kredit{" "}
                       </td>
                       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                          Edit
-                        </button>
+                        <Link to="/editcostumer">
+                          {" "}
+                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                            Edit
+                          </button>
+                        </Link>
                         <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
                           Delete
                         </button>
@@ -632,7 +668,6 @@ const Costumer = () => {
                 </ol>
               </div>
             </div>
-           
           </div>
         </div>
         <div className=" flex items-center justify-center md:mt-[20px] md:mb-[15px] lg:mt-[27px] lg:mb-[22px] mt-[10px] mb-[12px]">
@@ -647,30 +682,33 @@ const Costumer = () => {
         </div>
 
         <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px]  ">
-        <div
-          style={
-            {
-              // border:"1px solid yellow",
+          <div
+            style={
+              {
+                // border:"1px solid yellow",
+              }
             }
-          }
-        >
-          {" "}
-          <p
-            className="text-[12px] lg:text-[16px]"
           >
-            Hak Cipta © dzkyalftnnfs 2023
-          </p>
-        </div>
-        <div
-          className="a.href text-center text-white flex justify-center gap-[20px] text-[12px] lg:text-[16px]"
-          
-        >
-          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
-          {/* </div>
+            {" "}
+            <p className="text-[12px] lg:text-[16px]">
+              Hak Cipta © dzkyalftnnfs 2023
+            </p>
+          </div>
+          <div className="a.href text-center text-white flex justify-center gap-[20px] text-[12px] lg:text-[16px]">
+            <a
+              className=" hover:underline"
+              href="https://www.instagram.com/dzkyalfyatnnfs/"
+              target="_blank"
+            >
+              Instagram
+            </a>
+            {/* </div>
 <div> */}
-          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+            <a className=" hover:underline" href="https://www.twitter.com" target="_blank">
+              Twitter
+            </a>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

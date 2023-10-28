@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 
-const AddOrder = () => {
+const EditReportSewa = () => {
     const [search, setSearch] = useState("");
     const [accounts, setAccounts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,9 +21,11 @@ const AddOrder = () => {
         alert("User menu clicked!");
       }
     }
+  
+
     return(
         <>
-         <div className="bg-[#B3A492] lg:w-full md:w-[100%] w-[100%] md:h-[100vh] h-[100vh] lg:p-[60px] md:p-[100px] p-[50px] ">
+        <div className="bg-[#B3A492] lg:w-full md:w-[100%] w-[100%] md:h-[100vh] h-[100vh] lg:p-[55px] md:p-[100px] py-[55px] px-[30px] ">
         <center>
           {" "}
           <div className="bg-[#BFB29E] shadow-lg flex flex-col lg:flex-row md:flex-row items-center w-full justify-center text-center p-[10px] md:p-[25px] lg:p-[70px]">
@@ -31,11 +33,11 @@ const AddOrder = () => {
               <div className=" lg:gap-[10px]">
                 <div className="lg:gap-[10px]">
                   <p className="font-bold lg:mb-[10px] md:mb-[8px] mb-[5px] lg:text-[25px]">
-                    Dz's Create Order
+                    Dz's Edit Report Sewa
                   </p>
                   <p className="italic">
                     {" "}
-                    Buat ruangan baru dengan mengisi formulir di samping ini dan
+                    Ubah ruangan dengan mengisi formulir di samping ini dan
                     nikmati kenyaman fasilitas kami
                   </p>
                 </div>
@@ -47,25 +49,30 @@ const AddOrder = () => {
             <div className="flex flex-col lg:p-[10px] md:p-[15px] p-[10px]">
               <div>
                 <input
+                  placeholder="Date Time"
+                  type="text"
+                  className="lg:w-[350px] md:w-[262px] w-[180px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
+                />
+                <input
                   placeholder="Rooms"
                   type="text"
-                  className="lg:w-[350px] md:w-[262px] w-[130px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
+                  className="lg:w-[350px] md:w-[262px] w-[180px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
                 />
                 <input
                   placeholder="Capacity"
                   type="text"
-                  className="lg:w-[350px] md:w-[262px] w-[130px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
+                  className="lg:w-[350px] md:w-[262px] w-[180px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
                 />
                 <input
-                  placeholder="Your Email"
+                  placeholder="Booking"
                   type="text"
-                  className="lg:w-[350px] md:w-[262px] w-[130px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
+                  className="lg:w-[350px] md:w-[262px] w-[180px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] lg:p-[10px] md:p-[6px] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
                 />
               </div>
-              <div className="flex flex-col lg:gap-[20px] md:gap-[15px] justify-between">
-                <div className="flex flex-col lg:gap-[5px] md:gapy-[40px] justify-between">
-                  <div className="flex flex-col text-center justify-between lg:gap-20px] md:-[10px]">
-                    <div className="flex flex-col lg:gap-[10px] md:gapy-[10px]">
+              <div className="flex flex-col lg:gap-[20px] justify-between">
+                <div className="flex flex-col lg:gap-[5px] justify-between">
+                  <div className="flex flex-col text-center justify-between lg:gap-[10px]">
+                    <div className="flex flex-col lg:gap-[10px] ">
                       <span >
                         <label className="lg:mr-[150px] lg:ml-[10px] md:mr-[110px] md:ml-[10px] ">Snack:</label>
                         <select
@@ -74,7 +81,7 @@ const AddOrder = () => {
                             setCurrentPage(1) ||
                             setRecordsPerPage(Number(e.target.value))
                           }
-                          className="lg:w-[155px] md:w-[85px] lg:h-[30px] h-[30px] lg:h-[40px] text-[15px]  rounded-[5px] mr-[10px]"
+                          className="lg:w-[155px] lg:h-[30px] h-[30px] lg:h-[40px] text-[15px]  rounded-[5px] mr-[10px]"
                         >
                           <option className="lg:w-[100px]" value={false}>
                             false
@@ -83,23 +90,7 @@ const AddOrder = () => {
                         </select>
                       </span>
                     </div>
-                    <div className="md:mt-[5px]  ">
-                    <span>
-                    <label className="lg:mr-[150px] lg:ml-[10px] md:mr-[106px] md:ml-[10px] mt-[5px]">Lunch:</label>
-                    <select
-                      value={recordsPerPage}
-                      onChange={(e) =>
-                        setCurrentPage(1) ||
-                        setRecordsPerPage(Number(e.target.value))
-                      }
-                      className="lg:w-[155px] lg:h-[30px] h-[30px] md:w-[86px]  lg:h-[40px] text-[15px] rounded-[5px] mr-[10px]"
-                    >
-                      <option value={false}>false</option>
-                      <option value={true}>true</option>
-                    </select>
-                  </span>
-                    </div>
-                    <div className="md:mt-[5px]  ">
+                    <div className="mt-[5px]">
                     <span>
                     <label className="lg:mr-[125px] lg:ml-[10px] md:mr-[82px] md:ml-[10px] mr-[0px] ml-[5px] mt-[5px]">Extratime:</label>
                     <select
@@ -108,7 +99,7 @@ const AddOrder = () => {
                         setCurrentPage(1) ||
                         setRecordsPerPage(Number(e.target.value))
                       }
-                      className="lg:w-[155px] lg:h-[30px] h-[30px] md:w-[86px]  lg:h-[40px] text-[15px] rounded-[5px] md:mr-[10px]"
+                      className="lg:w-[155px] lg:h-[30px] h-[30px] lg:w-[100px] lg:h-[40px] text-[15px] rounded-[5px] md:mr-[10px]"
                     >
                       <option value={false}>false</option>
                       <option value={true}>true</option>
@@ -136,5 +127,4 @@ const AddOrder = () => {
         </>
     )
 }
-
-export default AddOrder;
+export default EditReportSewa;

@@ -13,6 +13,10 @@ import AddCostumer from "./components/AddCostumer";
 import AddTabel from "./components/AddTabel";
 import AddReportSewa from "./components/AddReportSewa";
 import AddOrder from "./components/AddOrder";
+import EditCostumer from "./components/EditCostumer";
+import EditReportSewa from "./components/EditReportSewa";
+import EditTabel from "./components/EditTabel";
+import EditOrder from "./components/EditOrder";
 
 function App() {
   return (
@@ -113,6 +117,51 @@ function App() {
             element={
               <PrivateRoute>
                 <AddOrder
+                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editcostumer"
+            element={
+              <PrivateRoute>
+                <EditCostumer
+                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editreportsewa"
+            element={
+              <PrivateRoute>
+                <EditReportSewa
+                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edittabel"
+            element={
+              <PrivateRoute>
+                <EditTabel
+                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editreportsewa"
+            element={
+              <PrivateRoute>
+                <EditReportSewa
+                 />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editorder"
+            element={
+              <PrivateRoute>
+                <EditOrder
                  />
               </PrivateRoute>
             }

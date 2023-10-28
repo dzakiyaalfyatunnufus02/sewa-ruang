@@ -430,10 +430,10 @@ const Home = () => {
             color: "",
           }}
         >
-          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/">Instagram</a>
+          <a  className=" hover:underline" href="https://www.instagram.com/dzkyalfyatnnfs/" target="_blank">Instagram</a>
           {/* </div>
 <div> */}
-          <a  className=" hover:underline" href="https://www.twitter.com" >Twitter</a>
+          <a  className=" hover:underline" href="https://www.twitter.com" target="_blank">Twitter</a>
         </div>
       </div>
     </div>

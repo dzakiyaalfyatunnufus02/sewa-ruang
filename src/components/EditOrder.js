@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 
-const AddOrder = () => {
+const EditOrder = () => {
     const [search, setSearch] = useState("");
     const [accounts, setAccounts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +23,7 @@ const AddOrder = () => {
     }
     return(
         <>
-         <div className="bg-[#B3A492] lg:w-full md:w-[100%] w-[100%] md:h-[100vh] h-[100vh] lg:p-[60px] md:p-[100px] p-[50px] ">
+         <div className="bg-[#B3A492] lg:w-full md:w-[100%] w-[100%] md:h-[100vh] h-[100vh] lg:p-[60px] md:p-[100px] py-[55px] px-[30px] ">
         <center>
           {" "}
           <div className="bg-[#BFB29E] shadow-lg flex flex-col lg:flex-row md:flex-row items-center w-full justify-center text-center p-[10px] md:p-[25px] lg:p-[70px]">
@@ -31,11 +31,11 @@ const AddOrder = () => {
               <div className=" lg:gap-[10px]">
                 <div className="lg:gap-[10px]">
                   <p className="font-bold lg:mb-[10px] md:mb-[8px] mb-[5px] lg:text-[25px]">
-                    Dz's Create Order
+                    Dz's Edit Order
                   </p>
                   <p className="italic">
                     {" "}
-                    Buat ruangan baru dengan mengisi formulir di samping ini dan
+                   Ubah ruangan dengan mengisi formulir di samping ini dan
                     nikmati kenyaman fasilitas kami
                   </p>
                 </div>
@@ -137,4 +137,4 @@ const AddOrder = () => {
     )
 }
 
-export default AddOrder;
+export default EditOrder;
