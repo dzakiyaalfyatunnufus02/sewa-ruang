@@ -201,7 +201,7 @@ const ReportSewa = () => {
                       Settings
                     </a>
                     <a
-                      href="/"
+                      href="/sambutan"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
@@ -740,7 +740,7 @@ const ReportSewa = () => {
                     </a>
                   </li>
 
-                  <li class="block h-8 w-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+                  <li className="block h-8 w-8 rounded border-stone-600 bg-stone-600 text-center leading-8 text-white">
                     2
                   </li>
 

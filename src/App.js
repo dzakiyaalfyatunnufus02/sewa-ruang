@@ -32,7 +32,7 @@ function App() {
             }
           />
           <Route
-            path="/"
+            path="/sambutan"
             element={
               <PrivateRoute>
                 <Sambutan />

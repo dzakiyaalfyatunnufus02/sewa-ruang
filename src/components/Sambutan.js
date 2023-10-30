@@ -78,7 +78,7 @@ const Sambutan = () => {
                 <li>LCD Proyektor</li>
               </ul>
               <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
-                <Link to="/login">Daftar Sekarang</Link>
+                <Link to="/register">Daftar Sekarang</Link>
               </button>
             </div>
             <div className="terbaik p-[5px] bg-[#DAC0A3] w-[300px] lg:w-[300px] md:w-[200px] rounded-[15px] flex flex-col items-center justify-center text-center">
@@ -93,7 +93,7 @@ const Sambutan = () => {
               <div>
                 {" "}
                 <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
-                  <Link to="/login">Daftar Sekarang</Link>
+                  <Link to="/register">Daftar Sekarang</Link>
                 </button>
               </div>
             </div>
@@ -108,7 +108,7 @@ const Sambutan = () => {
               </ul>
 
               <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
-                <Link to="/login" target="blank">
+                <Link to="/register" target="blank">
                   Daftar Sekarang
                 </Link>
               </button>
