@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../components/Tabel.css";
-import {
-  Button,
-  Nav,
-  NavDropdown,
-  NavLink,
-  Navbar,
-  Table,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {Button} from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Tabel = () => {
+  let history = useNavigate();
+  const [currentRoom, setCurrentRoom] = useState(1);
   const [search, setSearch] = useState("");
-  const [accounts, setAccounts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
+  const firstRoom = (currentRoom - 1) * recordsPerPage;
+  const lastRoom = currentRoom * recordsPerPage;
+  const [accounts, setAccounts] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const records = rooms.slice(firstRoom, lastRoom);
+
+  const getRooms = async () => {
+    try {
+      const respon = await axios.get("http://localhost:2222/rooms");
+      const allRooms = respon.data;
+
+      const filterRooms = allRooms.filter(
+        (rooms) =>
+          rooms.lantai?.toLowerCase().includes(search?.toLowerCase()) 
+      );
+
+      setRooms(filterRooms);
+      console.log(filterRooms);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function toggleUserMenu() {
     var userMenu = document.getElementById("user-menu");
@@ -31,10 +47,24 @@ const Tabel = () => {
     }
   }
 
+  const handleDelete = async (id) => {
+    try {
+      const respon = await axios.delete(`http://localhost:2222/rooms/${id}`);
+      console.log(respon.data);
+      console.log("delete");
+    } catch (error) {
+      console.log(error);
+    }
+    history("/tabel");
+  };
+
   function signOut() {
     // Add sign-out logic here
     alert("Signing out...");
   }
+  useEffect(() => {
+    getRooms();
+  }, [search]);
 
   return (
     <>
@@ -324,410 +354,164 @@ const Tabel = () => {
                     </tr>
                   </thead>
 
-                  <tbody class="divide-y divide-gray-200">
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        2
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        4{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        5{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        6{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        7{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        8{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        9{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        10{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        1{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        11{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        2{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/edittabel">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        12{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        4{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="edittabel">
-                          {" "}
-                         
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                  <tbody className="divide-y divide-gray-200">
+                    {rooms && rooms.length > 0 ? (
+                      records.map((item, index) => (
+                        <tr key={index}>
+                          <td>{item.id}</td>
+                          <td>{item.lantai}</td>
+                          <td>{item.ruang}</td>
+                          <td>
+                            <Link to={`/edittabel/${item.id}`}>
+                              <button>Edit</button>
+                            </Link>
+                            &nbsp;
+                            <button onClick={() => handleDelete(item.id)}>
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="4">No data available</td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
-              </div>
 
-              <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
-                <ol class="flex justify-end gap-1 text-xs font-medium">
-                  <li>
-                    <a
-                      href="#"
-                      class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
-                    >
-                      <span class="sr-only">Prev Page</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-3 w-3"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
+                  <ol class="flex justify-end gap-1 text-xs font-medium">
+                    <li>
+                      <a
+                        href="#"
+                        class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
                       >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </li>
+                        <span class="sr-only">Prev Page</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3 w-3"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                    </li>
 
-                  <li>
-                    <a
-                      href="#"
-                      className="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                    >
-                      1
-                    </a>
-                  </li>
-
-                  <li className="block h-8 w-8 rounded border-stone-600 bg-stone-600 text-center leading-8 text-white">
-                    2
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                    >
-                      3
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                    >
-                      4
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
-                    >
-                      <span class="sr-only">Next Page</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-3 w-3"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    <li>
+                      <a
+                        href="#"
+                        className="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
                       >
-                        <path
-                          fill-rule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </li>
-                </ol>
+                        1
+                      </a>
+                    </li>
+
+                    <li className="block h-8 w-8 rounded border-stone-600 bg-stone-600 text-center leading-8 text-white">
+                      2
+                    </li>
+
+                    <li>
+                      <a
+                        href="#"
+                        class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                      >
+                        3
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="#"
+                        class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                      >
+                        4
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="#"
+                        class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180"
+                      >
+                        <span class="sr-only">Next Page</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3 w-3"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className=" flex items-center justify-center">
-          <div className="text-[white] text-center bg-[#6c5f5b]  w-[300px]   md:w-[500px] lg:w-[700px]  md:w-[500px]   rounded-tr-[50px] rounded-bl-[50px] lg:p-[40px] p-[20px] lg:mt-[20px] lg:mb-[20px] md:mt-[15px] md:mb-[15px] mt-[10px] mb-[10px]">
-            <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">
-              Thank you for choosing Dz's Rental Costumer!
-            </h3>
-            <p className="text-[10px] md:text-[14px] lg:text-[18px]">
-              For inquiries or assistance, please contact our support team.
-            </p>
+          <div className=" flex items-center justify-center">
+            <div className="text-[white] text-center bg-[#6c5f5b]  w-[300px]   md:w-[500px] lg:w-[700px]  md:w-[500px]   rounded-tr-[50px] rounded-bl-[50px] lg:p-[40px] p-[20px] lg:mt-[20px] lg:mb-[20px] md:mt-[15px] md:mb-[15px] mt-[10px] mb-[10px]">
+              <h3 className="text-[13px] md:text-[16px] lg:text-[25px]">
+                Thank you for choosing Dz's Rental Costumer!
+              </h3>
+              <p className="text-[10px] md:text-[14px] lg:text-[18px]">
+                For inquiries or assistance, please contact our support team.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
-          <div
-            style={
-              {
-                // border:"1px solid yellow",
+          <div className="icons block text-center md:flex md:justify-between p-[20px] bg-gray-400 p-[10px] ">
+            <div
+              style={
+                {
+                  // border:"1px solid yellow",
+                }
               }
-            }
-          >
-            {" "}
-            <p
+            >
+              {" "}
+              <p
+                style={{
+                  margin: 0,
+                }}
+              >
+                Hak Cipta © dzkyalftnnfs 2023
+              </p>
+            </div>
+            <div
+              className="a.href text-center text-white flex justify-center"
               style={{
-                margin: 0,
+                display: "flex",
+                gap: "20px",
+                color: "",
               }}
             >
-              Hak Cipta © dzkyalftnnfs 2023
-            </p>
-          </div>
-          <div
-            className="a.href text-center text-white flex justify-center"
-            style={{
-              display: "flex",
-              gap: "20px",
-              color: "",
-            }}
-          >
-            <a
-              className=" hover:underline"
-              href="https://www.instagram.com/dzkyalfyatnnfs/"
-              target="_blank"
-            >
-              Instagram
-            </a>
-            {/* </div>
+              <a
+                className=" hover:underline"
+                href="https://www.instagram.com/dzkyalfyatnnfs/"
+                target="_blank"
+              >
+                Instagram
+              </a>
+              {/* </div>
 <div> */}
-            <a className=" hover:underline" href="https://www.twitter.com" target="_blank">
-              Twitter
-            </a>
+              <a
+                className=" hover:underline"
+                href="https://www.twitter.com"
+                target="_blank"
+              >
+                Twitter
+              </a>
+            </div>
           </div>
         </div>
       </div>

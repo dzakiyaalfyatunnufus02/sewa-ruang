@@ -4,7 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 function PrivateRoute({ children }) {
   const location = useLocation();
   if (!localStorage.getItem("UserRole")) {
-    return <Navigate to="/home" state={{ from: location }} />;
+    return <Navigate to="/sambutan" state={{ from: location }} />;
   }
   return children;
 }

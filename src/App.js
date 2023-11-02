@@ -1,8 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sambutan from "./components/Sambutan";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 import Login from "./components/Login";
+import Home from "./components/Home";
 import PrivateRoute from "./privat-router/PrivatRoute";
 import Register from "./components/Register";
 import Tabel from "./components/Tabel";
@@ -31,30 +32,9 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/sambutan"
-            element={
-              <PrivateRoute>
-                <Sambutan />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PrivateRoute>
-                <Login />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PrivateRoute>
-                <Register />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/sambutan" element={<Sambutan />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/tabel"
             element={
@@ -87,7 +67,7 @@ function App() {
               </PrivateRoute>
             }
           />
-         
+
           <Route
             path="/addCostumer"
             element={
@@ -116,8 +96,7 @@ function App() {
             path="/addorder"
             element={
               <PrivateRoute>
-                <AddOrder
-                 />
+                <AddOrder />
               </PrivateRoute>
             }
           />
@@ -125,8 +104,7 @@ function App() {
             path="/editcostumer"
             element={
               <PrivateRoute>
-                <EditCostumer
-                 />
+                <EditCostumer />
               </PrivateRoute>
             }
           />
@@ -134,8 +112,7 @@ function App() {
             path="/editreportsewa"
             element={
               <PrivateRoute>
-                <EditReportSewa
-                 />
+                <EditReportSewa />
               </PrivateRoute>
             }
           />
@@ -143,8 +120,7 @@ function App() {
             path="/edittabel"
             element={
               <PrivateRoute>
-                <EditTabel
-                 />
+                <EditTabel />
               </PrivateRoute>
             }
           />
@@ -152,8 +128,7 @@ function App() {
             path="/editreportsewa"
             element={
               <PrivateRoute>
-                <EditReportSewa
-                 />
+                <EditReportSewa />
               </PrivateRoute>
             }
           />
@@ -161,12 +136,11 @@ function App() {
             path="/editorder"
             element={
               <PrivateRoute>
-                <EditOrder
-                 />
+                <EditOrder />
               </PrivateRoute>
             }
           />
-          </Routes>
+        </Routes>
       </Router>
     </>
   );

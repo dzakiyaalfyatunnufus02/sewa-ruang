@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 const Register = () => {
   const Navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [username, setUsernma] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
@@ -37,11 +37,11 @@ const Register = () => {
       }
       try {
         const RESPON = await axios.post(
-          "  http://localhost:222/accounts",
+          "  http://localhost:2222/accounts",
           request
         );
         console.log(RESPON.data);
-        
+
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -54,7 +54,6 @@ const Register = () => {
       } catch (error) {
         console.log(error);
       }
-     
     } else {
       Swal.fire({
         position: "top-center",
@@ -84,12 +83,13 @@ const Register = () => {
             </p>
             <div className="flex flex-col lg:gap-[30px] md:gap-[8px] gap-[5px]">
               <form action="" onSubmit={handleSubmit}>
+                {" "}
                 <div className="flex flex-col lg:gap-[px]">
                   <div className="flex flex-col lg:gap-[10px]">
                     <input
                       id="usernmae"
                       value={username}
-                      onChange={(e) => setUsernma(e.target.value)}
+                      onChange={(e) => setUsername(e.target.value)}
                       name="username"
                       placeholder="Your Username"
                       type="text"
@@ -117,8 +117,11 @@ const Register = () => {
                     className="lg:w-full md:w-full w-[165px] md:h-[32px] lg:h-[35px] h-[25px] lg:rounded-[5px] md:rounded-[4px] rounded-[3px] border-0 bg-[lightgray] p-[10px] mb-[5px]" // Tambahkan mb untuk margin-bottom
                   />
 
-                  <button type="submit" className="lg:w-[140px] md:w-[85px] w-[80px] lg:h-[38px] md:h-[34px] h-[25px] lg:rounded-[10px] md:rounded-[6px] rounded-[3px] bg-[#6C5F5B] border-0">
-                   SIGN UP
+                  <button
+                    type="submit"
+                    className="lg:w-[140px] md:w-[85px] w-[80px] lg:h-[38px] md:h-[34px] h-[25px] lg:rounded-[10px] md:rounded-[6px] rounded-[3px] bg-[#6C5F5B] border-0"
+                  >
+                    SIGN UP
                   </button>
                 </div>
               </form>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../components/Tabel.css";
+import Swal from "sweetalert2";
 import ruang from "../assets/ruang-keluarga-nyaman-cover.jpg";
 import {
   Button,
@@ -9,33 +10,71 @@ import {
   Navbar,
   Table,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Costumer = () => {
+  let history = useNavigate("");
   const [search, setSearch] = useState("");
   const [accounts, setAccounts] = useState([]);
+  const [Costumer, setCostumer] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
+  const firstIndex = (currentPage - 1) * recordsPerPage;
+  const lastIndex = currentPage * recordsPerPage;
+  const Records = Costumer.slice(firstIndex, lastIndex);
+  const filterCostumer = Costumer.filter((employee) =>
+    employee.name.toLowerCase().includes(search.toLocaleLowerCase())
+  );
 
-  const getAccounts = async () => {
+  const getCostumer = async () => {
     try {
-      const respon = await axios.get("http://localhost:2222/accounts");
+      const respon = await axios.get("http://localhost:2222/costumers");
       const allAccounts = respon.data;
 
       // Apply search filter only for supervisor role
-      const filteredAccounts = allAccounts.filter(
+      const filterCostumer = allAccounts.filter(
         (employee) =>
-          employee.username?.toLowerCase().includes(search?.toLowerCase()) &&
+          employee.name?.toLowerCase().includes(search?.toLowerCase()) &&
           employee.role !== "supervisor"
       );
 
-      setAccounts(filteredAccounts);
-      console.log(filteredAccounts);
+      setCostumer(filterCostumer);
+      console.log(filterCostumer);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const habdleLogout = () => {
+    localStorage.clear();
+    history("/sambutan");
+
+    Swal.fire({
+      position: "top-middle",
+      icon: "success",
+      title: "LOGOUT Berhasil!!",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const respon = await axios.get.delete(
+        ` http://localhost:2222/costumers/${id}`
+      );
+      console.log(respon.data);
+      console.log("deleted");
+      getCostumer();
+    } catch (error) {
+      console.log(error);
+    }
+    history("/costumer");
+  };
+  useEffect(()=>{
+    getCostumer()
+  }, [])
   return (
     <>
       <div
@@ -200,7 +239,8 @@ const Costumer = () => {
                     >
                       Settings
                     </a>
-                    <a
+                    <Link
+                      onClick={habdleLogout}
                       href="/"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
@@ -208,7 +248,7 @@ const Costumer = () => {
                       id="user-menu-item-2"
                     >
                       Sign out
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -308,285 +348,41 @@ const Costumer = () => {
                 <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                   <thead class="ltr:text-left rtl:text-right">
                     <tr>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        NAME
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        PHONE{" "}
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        PAYMETHOD{" "}
-                      </th>
-                      <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        Action
-                      </th>
+                      <th>NAME</th>
+                      <th>PHONE</th>
+                      <th>PAYMETHOD</th>
+                      <th>ACTIONS</th>
                     </tr>
                   </thead>
 
-                  <tbody class="divide-y divide-gray-200">
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        Alfy{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        08123435654{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        kredit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-[10px]">
-                        <Link to="/editcostumer">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        awa
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        908346386375{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        debit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        mimi{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        9849764910{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        cash{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        rere{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        345325674232{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        cash
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        wewe{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        3456375623713846728{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        cash{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        tutu{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        84667463623523{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        debit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                            Delete
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        bhii{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        56526256562{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        kredit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        kim{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        345678900987{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        debit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        yuya{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        12345678{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        cash{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                            Delete
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        zaza{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        34567890{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        kredit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        nana{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        21234567654356{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        debit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        fafa{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        987654567890{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        kredit{" "}
-                      </td>
-                      <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                        <Link to="/editcostumer">
-                          {" "}
-                          <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
-                            Edit
-                          </button>
-                        </Link>
-                        <button className=" text-white bg-stone-500 px-[12px] py-[4px] rounded-[10px] ">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                  <tbody className="divide-y divide-gray-200">
+                    {filterCostumer && filterCostumer.length > 0 ? (
+                      Records.map((item, index) => (
+                        <tr key={index}>
+                          <td>{item.name}</td>
+                          <td>{item.phone}</td>
+                          <td>{item.payMethod}</td>
+                          <td>
+                            <Link to={`/editCostumer/${item.id}`}>
+                              <button className="text-white bg-gray-400 px-[12px] py-[4px] rounded-[10px] mr-[15px]">
+                                Edit
+                              </button>
+                            </Link>
+                            &nbsp;
+                            <button
+                              className="btn-dlt"
+                              onClick={() => handleDelete(item.id)}
+                            >
+                              DELETE
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="4">No data available</td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -703,7 +499,11 @@ const Costumer = () => {
             </a>
             {/* </div>
 <div> */}
-            <a className=" hover:underline" href="https://www.twitter.com" target="_blank">
+            <a
+              className=" hover:underline"
+              href="https://www.twitter.com"
+              target="_blank"
+            >
               Twitter
             </a>
           </div>

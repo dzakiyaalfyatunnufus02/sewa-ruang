@@ -77,7 +77,7 @@ const Sambutan = () => {
                 <li>AC</li>
                 <li>LCD Proyektor</li>
               </ul>
-              <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
+              <button type="submit" className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
                 <Link to="/register">Daftar Sekarang</Link>
               </button>
             </div>
@@ -92,7 +92,7 @@ const Sambutan = () => {
               </ul>
               <div>
                 {" "}
-                <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
+                <button type="submit" className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
                   <Link to="/register">Daftar Sekarang</Link>
                 </button>
               </div>
@@ -107,7 +107,7 @@ const Sambutan = () => {
                 <li>Layanan Gratis</li>
               </ul>
 
-              <button className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
+              <button type="submit" className="bg-[#6C5F5B] text-white p-[1px] rounded-[5px] lg:w-[150px]  text-center  lg:rounded-[10px]">
                 <Link to="/register" target="blank">
                   Daftar Sekarang
                 </Link>

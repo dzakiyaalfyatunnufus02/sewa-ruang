@@ -195,6 +195,20 @@
       "username": "wiwin",
       "password": "wiwin",
       "role": "supervisor"
+    },
+    {
+      "id": "08f4e729",
+      "email": "Alfy@gmail.com",
+      "username": "Alfy",
+      "password": "alfy",
+      "role": "supervisor"
+    },
+    {
+      "id": "42b83b0d",
+      "email": "ifan@gmail.com",
+      "username": "ifan",
+      "password": "ifan",
+      "role": "supervisor"
     }
   ],
   "costumers": [

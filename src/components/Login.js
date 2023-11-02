@@ -32,7 +32,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:222/accounts`);
+      const response = await axios.get(`http://localhost:2222/accounts`);
       if (formdata.username !== "" && formdata.password !== "") {
         const obj = response.data;
         const existingData = obj.find(
